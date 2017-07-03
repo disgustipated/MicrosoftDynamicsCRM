@@ -1,0 +1,15 @@
+E:\workspace\MicrosoftCRM\bin\Debug\MicrosoftDynamicsCRMPlugin.dll
+E:\workspace\MicrosoftCRM\bin\Debug\MicrosoftDynamicsCRMPlugin.pdb
+E:\workspace\MicrosoftCRM\bin\Debug\CRMPluginUtils.dll
+E:\workspace\MicrosoftCRM\bin\Debug\microsoft.crm.sdk.proxy.dll
+E:\workspace\MicrosoftCRM\bin\Debug\microsoft.xrm.sdk.dll
+E:\workspace\MicrosoftCRM\bin\Debug\MyPhoneCRMIntegration.dll
+E:\workspace\MicrosoftCRM\obj\Debug\Microsoft.Dynamics.CRM.Plugin.build.csprojResolveAssemblyReference.cache
+E:\workspace\MicrosoftCRM\obj\Debug\MicrosoftDynamicsCRMPlugin.IFDAuthenticationConfigurationControl.resources
+E:\workspace\MicrosoftCRM\obj\Debug\MicrosoftDynamicsCRMPlugin.OnPremiseAuthenticationConfigurationControl.resources
+E:\workspace\MicrosoftCRM\obj\Debug\MicrosoftDynamicsCRMPlugin.Properties.Resources.resources
+E:\workspace\MicrosoftCRM\obj\Debug\MicrosoftDynamicsCRMPlugin.DynamicsPluginConfigurationControl.resources
+E:\workspace\MicrosoftCRM\obj\Debug\MicrosoftDynamicsCRMPlugin.Office365AuthenticationConfigurationControl.resources
+E:\workspace\MicrosoftCRM\obj\Debug\Microsoft.Dynamics.CRM.Plugin.build.csproj.GenerateResource.Cache
+E:\workspace\MicrosoftCRM\obj\Debug\MicrosoftDynamicsCRMPlugin.dll
+E:\workspace\MicrosoftCRM\obj\Debug\MicrosoftDynamicsCRMPlugin.pdb
