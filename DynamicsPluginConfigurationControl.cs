@@ -294,9 +294,5 @@ namespace MicrosoftDynamicsCRMPlugin
         txtBrowser.Text = selectBrowserDialog.FileName;
     }
 
-        private void chkNewCase_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-    }
+  }
 }
