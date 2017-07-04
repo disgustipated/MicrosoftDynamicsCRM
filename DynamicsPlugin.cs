@@ -18,7 +18,7 @@ namespace MicrosoftDynamicsCRMPlugin
     private DynamicsSession session = null;
 
     private string organization = String.Empty;
-    private AuthenticationMethods authenticationMethod = AuthenticationMethods.OnPremise;
+    private AuthenticationMethods authenticationMethod = AuthenticationMethods.IFD;
     private string server = String.Empty;
     private int port = 0;
     private bool useDefaultCredentials = false;

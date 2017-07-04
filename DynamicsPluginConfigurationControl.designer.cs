@@ -45,9 +45,9 @@ namespace MicrosoftDynamicsCRMPlugin
             this.selectBrowserDialog = new System.Windows.Forms.OpenFileDialog();
             this.grpBoxLoginInformation = new System.Windows.Forms.GroupBox();
             this.grpBoxContactLookup = new System.Windows.Forms.GroupBox();
+            this.chkNewCase = new System.Windows.Forms.CheckBox();
             this.moveDownButton = new System.Windows.Forms.Button();
             this.moveUpButton = new System.Windows.Forms.Button();
-            this.chkNewCase = new System.Windows.Forms.CheckBox();
             this.grpBoxLoginInformation.SuspendLayout();
             this.grpBoxContactLookup.SuspendLayout();
             this.SuspendLayout();
@@ -258,6 +258,17 @@ namespace MicrosoftDynamicsCRMPlugin
             this.grpBoxContactLookup.TabStop = false;
             this.grpBoxContactLookup.Text = "Contact Lookup";
             // 
+            // chkNewCase
+            // 
+            this.chkNewCase.AutoSize = true;
+            this.chkNewCase.Location = new System.Drawing.Point(9, 87);
+            this.chkNewCase.Name = "chkNewCase";
+            this.chkNewCase.Size = new System.Drawing.Size(184, 17);
+            this.chkNewCase.TabIndex = 11;
+            this.chkNewCase.Text = "Create new case on recieved call";
+            this.chkNewCase.UseVisualStyleBackColor = true;
+            this.chkNewCase.CheckedChanged += new System.EventHandler(this.chkNewCase_CheckedChanged);
+            // 
             // moveDownButton
             // 
             this.moveDownButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -283,16 +294,6 @@ namespace MicrosoftDynamicsCRMPlugin
             this.moveUpButton.TabIndex = 5;
             this.moveUpButton.UseVisualStyleBackColor = true;
             this.moveUpButton.Click += new System.EventHandler(this.moveUpButton_Click);
-            // 
-            // chkNewCase
-            // 
-            this.chkNewCase.AutoSize = true;
-            this.chkNewCase.Location = new System.Drawing.Point(9, 87);
-            this.chkNewCase.Name = "chkNewCase";
-            this.chkNewCase.Size = new System.Drawing.Size(184, 17);
-            this.chkNewCase.TabIndex = 11;
-            this.chkNewCase.Text = "Create new case on recieved call";
-            this.chkNewCase.UseVisualStyleBackColor = true;
             // 
             // DynamicsPluginConfigurationControl
             // 

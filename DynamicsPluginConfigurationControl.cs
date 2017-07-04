@@ -275,5 +275,10 @@ namespace MicrosoftDynamicsCRMPlugin
       if (selectBrowserDialog.ShowDialog() == DialogResult.OK)
         txtBrowser.Text = selectBrowserDialog.FileName;
     }
-  }
+
+        private void chkNewCase_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+    }
 }
