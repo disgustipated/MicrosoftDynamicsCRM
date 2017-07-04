@@ -48,6 +48,7 @@ namespace MicrosoftDynamicsCRMPlugin
             this.chkNewCase = new System.Windows.Forms.CheckBox();
             this.moveDownButton = new System.Windows.Forms.Button();
             this.moveUpButton = new System.Windows.Forms.Button();
+            this.chkOpenPhoneCall = new System.Windows.Forms.CheckBox();
             this.grpBoxLoginInformation.SuspendLayout();
             this.grpBoxContactLookup.SuspendLayout();
             this.SuspendLayout();
@@ -93,9 +94,9 @@ namespace MicrosoftDynamicsCRMPlugin
             this.lookupOrderListBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(53)))), ((int)(((byte)(53)))));
             this.lookupOrderListBox.ForeColor = System.Drawing.SystemColors.HighlightText;
             this.lookupOrderListBox.FormattingEnabled = true;
-            this.lookupOrderListBox.Location = new System.Drawing.Point(9, 123);
+            this.lookupOrderListBox.Location = new System.Drawing.Point(9, 149);
             this.lookupOrderListBox.Name = "lookupOrderListBox";
-            this.lookupOrderListBox.Size = new System.Drawing.Size(204, 95);
+            this.lookupOrderListBox.Size = new System.Drawing.Size(204, 82);
             this.lookupOrderListBox.TabIndex = 4;
             this.lookupOrderListBox.SelectedIndexChanged += new System.EventHandler(this.lookupOrderListBox_SelectedIndexChanged);
             // 
@@ -129,7 +130,7 @@ namespace MicrosoftDynamicsCRMPlugin
             this.authenticationControlPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.authenticationControlPanel.Location = new System.Drawing.Point(9, 66);
             this.authenticationControlPanel.Name = "authenticationControlPanel";
-            this.authenticationControlPanel.Size = new System.Drawing.Size(235, 190);
+            this.authenticationControlPanel.Size = new System.Drawing.Size(235, 169);
             this.authenticationControlPanel.TabIndex = 4;
             // 
             // lblAuthenticationMethod
@@ -158,7 +159,7 @@ namespace MicrosoftDynamicsCRMPlugin
             this.selectBrowserButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.selectBrowserButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.selectBrowserButton.Location = new System.Drawing.Point(9, 297);
+            this.selectBrowserButton.Location = new System.Drawing.Point(9, 318);
             this.selectBrowserButton.Name = "selectBrowserButton";
             this.selectBrowserButton.Size = new System.Drawing.Size(235, 23);
             this.selectBrowserButton.TabIndex = 10;
@@ -172,7 +173,7 @@ namespace MicrosoftDynamicsCRMPlugin
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtBrowser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(53)))), ((int)(((byte)(53)))));
             this.txtBrowser.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.txtBrowser.Location = new System.Drawing.Point(9, 271);
+            this.txtBrowser.Location = new System.Drawing.Point(9, 292);
             this.txtBrowser.Name = "txtBrowser";
             this.txtBrowser.Size = new System.Drawing.Size(235, 20);
             this.txtBrowser.TabIndex = 9;
@@ -183,7 +184,7 @@ namespace MicrosoftDynamicsCRMPlugin
             // 
             this.lblSelectBrowser.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblSelectBrowser.AutoSize = true;
-            this.lblSelectBrowser.Location = new System.Drawing.Point(6, 255);
+            this.lblSelectBrowser.Location = new System.Drawing.Point(6, 276);
             this.lblSelectBrowser.Name = "lblSelectBrowser";
             this.lblSelectBrowser.Size = new System.Drawing.Size(78, 13);
             this.lblSelectBrowser.TabIndex = 8;
@@ -193,7 +194,7 @@ namespace MicrosoftDynamicsCRMPlugin
             // 
             this.chkBoxUseDefaultBrowser.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.chkBoxUseDefaultBrowser.AutoSize = true;
-            this.chkBoxUseDefaultBrowser.Location = new System.Drawing.Point(9, 235);
+            this.chkBoxUseDefaultBrowser.Location = new System.Drawing.Point(9, 256);
             this.chkBoxUseDefaultBrowser.Name = "chkBoxUseDefaultBrowser";
             this.chkBoxUseDefaultBrowser.Size = new System.Drawing.Size(120, 17);
             this.chkBoxUseDefaultBrowser.TabIndex = 7;
@@ -204,7 +205,7 @@ namespace MicrosoftDynamicsCRMPlugin
             // lblLookupOrder
             // 
             this.lblLookupOrder.AutoSize = true;
-            this.lblLookupOrder.Location = new System.Drawing.Point(6, 107);
+            this.lblLookupOrder.Location = new System.Drawing.Point(6, 133);
             this.lblLookupOrder.Name = "lblLookupOrder";
             this.lblLookupOrder.Size = new System.Drawing.Size(70, 13);
             this.lblLookupOrder.TabIndex = 3;
@@ -228,7 +229,7 @@ namespace MicrosoftDynamicsCRMPlugin
             this.grpBoxLoginInformation.ForeColor = System.Drawing.SystemColors.HighlightText;
             this.grpBoxLoginInformation.Location = new System.Drawing.Point(3, 3);
             this.grpBoxLoginInformation.Name = "grpBoxLoginInformation";
-            this.grpBoxLoginInformation.Size = new System.Drawing.Size(250, 262);
+            this.grpBoxLoginInformation.Size = new System.Drawing.Size(250, 241);
             this.grpBoxLoginInformation.TabIndex = 0;
             this.grpBoxLoginInformation.TabStop = false;
             this.grpBoxLoginInformation.Text = "Login Information";
@@ -238,6 +239,7 @@ namespace MicrosoftDynamicsCRMPlugin
             this.grpBoxContactLookup.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpBoxContactLookup.Controls.Add(this.chkOpenPhoneCall);
             this.grpBoxContactLookup.Controls.Add(this.chkNewCase);
             this.grpBoxContactLookup.Controls.Add(this.selectBrowserButton);
             this.grpBoxContactLookup.Controls.Add(this.chkLookupContacts);
@@ -251,9 +253,9 @@ namespace MicrosoftDynamicsCRMPlugin
             this.grpBoxContactLookup.Controls.Add(this.chkLookupAccounts);
             this.grpBoxContactLookup.Controls.Add(this.lookupOrderListBox);
             this.grpBoxContactLookup.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.grpBoxContactLookup.Location = new System.Drawing.Point(3, 271);
+            this.grpBoxContactLookup.Location = new System.Drawing.Point(3, 250);
             this.grpBoxContactLookup.Name = "grpBoxContactLookup";
-            this.grpBoxContactLookup.Size = new System.Drawing.Size(250, 326);
+            this.grpBoxContactLookup.Size = new System.Drawing.Size(250, 347);
             this.grpBoxContactLookup.TabIndex = 1;
             this.grpBoxContactLookup.TabStop = false;
             this.grpBoxContactLookup.Text = "Contact Lookup";
@@ -275,7 +277,7 @@ namespace MicrosoftDynamicsCRMPlugin
             this.moveDownButton.FlatAppearance.BorderSize = 0;
             this.moveDownButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.moveDownButton.Image = global::MicrosoftDynamicsCRMPlugin.Properties.Resources.MoveDown;
-            this.moveDownButton.Location = new System.Drawing.Point(219, 141);
+            this.moveDownButton.Location = new System.Drawing.Point(219, 174);
             this.moveDownButton.Name = "moveDownButton";
             this.moveDownButton.Size = new System.Drawing.Size(25, 25);
             this.moveDownButton.TabIndex = 6;
@@ -288,12 +290,22 @@ namespace MicrosoftDynamicsCRMPlugin
             this.moveUpButton.FlatAppearance.BorderSize = 0;
             this.moveUpButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.moveUpButton.Image = global::MicrosoftDynamicsCRMPlugin.Properties.Resources.MoveUp;
-            this.moveUpButton.Location = new System.Drawing.Point(219, 110);
+            this.moveUpButton.Location = new System.Drawing.Point(219, 143);
             this.moveUpButton.Name = "moveUpButton";
             this.moveUpButton.Size = new System.Drawing.Size(25, 25);
             this.moveUpButton.TabIndex = 5;
             this.moveUpButton.UseVisualStyleBackColor = true;
             this.moveUpButton.Click += new System.EventHandler(this.moveUpButton_Click);
+            // 
+            // chkOpenPhoneCall
+            // 
+            this.chkOpenPhoneCall.AutoSize = true;
+            this.chkOpenPhoneCall.Location = new System.Drawing.Point(9, 110);
+            this.chkOpenPhoneCall.Name = "chkOpenPhoneCall";
+            this.chkOpenPhoneCall.Size = new System.Drawing.Size(209, 17);
+            this.chkOpenPhoneCall.TabIndex = 12;
+            this.chkOpenPhoneCall.Text = "Open phone call activity after call ends";
+            this.chkOpenPhoneCall.UseVisualStyleBackColor = true;
             // 
             // DynamicsPluginConfigurationControl
             // 
@@ -336,5 +348,6 @@ namespace MicrosoftDynamicsCRMPlugin
     private System.Windows.Forms.GroupBox grpBoxLoginInformation;
     private System.Windows.Forms.GroupBox grpBoxContactLookup;
     private System.Windows.Forms.CheckBox chkNewCase;
+        private System.Windows.Forms.CheckBox chkOpenPhoneCall;
     }
 }

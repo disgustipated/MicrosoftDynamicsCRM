@@ -38,6 +38,8 @@ namespace MicrosoftDynamicsCRMPlugin
       return url;
     }
 
+
+
     private void launchUrl(string url)
     {
       if (configurationManager.GetValue("Microsoft Dynamics Plug-in", "UseDefaultBrowser", "True") == "True")
