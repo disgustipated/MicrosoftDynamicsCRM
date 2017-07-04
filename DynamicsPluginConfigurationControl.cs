@@ -87,7 +87,7 @@ namespace MicrosoftDynamicsCRMPlugin
         else
           lookupOrderListBox.SelectedIndex = 0;
 
-        chkOpenPhoneCall.Checked = configurationManager.GetValue("Microsoft Dynamics Plug-in", "OpenPhoneCall", "True") == "True";
+        chkOpenPhoneCall.Checked = configurationManager.GetValue("Microsoft Dynamics Plug-in", "OpenPhoneCall", "False") == "False";
         chkBoxUseDefaultBrowser.Checked = configurationManager.GetValue("Microsoft Dynamics Plug-in", "UseDefaultBrowser", "True") == "True";
         txtBrowser.Text = configurationManager.GetValue("Microsoft Dynamics Plug-in", "CustomBrowser", "");
       }
