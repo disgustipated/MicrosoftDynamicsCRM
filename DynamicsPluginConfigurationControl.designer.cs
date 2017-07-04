@@ -45,10 +45,10 @@ namespace MicrosoftDynamicsCRMPlugin
             this.selectBrowserDialog = new System.Windows.Forms.OpenFileDialog();
             this.grpBoxLoginInformation = new System.Windows.Forms.GroupBox();
             this.grpBoxContactLookup = new System.Windows.Forms.GroupBox();
+            this.chkOpenPhoneCall = new System.Windows.Forms.CheckBox();
+            this.chkOpenNewCase = new System.Windows.Forms.CheckBox();
             this.moveDownButton = new System.Windows.Forms.Button();
             this.moveUpButton = new System.Windows.Forms.Button();
-            this.chkOpenNewCase = new System.Windows.Forms.CheckBox();
-            this.chkOpenPhoneCall = new System.Windows.Forms.CheckBox();
             this.grpBoxLoginInformation.SuspendLayout();
             this.grpBoxContactLookup.SuspendLayout();
             this.SuspendLayout();
@@ -260,6 +260,26 @@ namespace MicrosoftDynamicsCRMPlugin
             this.grpBoxContactLookup.TabStop = false;
             this.grpBoxContactLookup.Text = "Contact Lookup";
             // 
+            // chkOpenPhoneCall
+            // 
+            this.chkOpenPhoneCall.AutoSize = true;
+            this.chkOpenPhoneCall.Location = new System.Drawing.Point(9, 112);
+            this.chkOpenPhoneCall.Name = "chkOpenPhoneCall";
+            this.chkOpenPhoneCall.Size = new System.Drawing.Size(183, 17);
+            this.chkOpenPhoneCall.TabIndex = 12;
+            this.chkOpenPhoneCall.Text = "Open phone call activity after call";
+            this.chkOpenPhoneCall.UseVisualStyleBackColor = true;
+            // 
+            // chkOpenNewCase
+            // 
+            this.chkOpenNewCase.AutoSize = true;
+            this.chkOpenNewCase.Location = new System.Drawing.Point(9, 88);
+            this.chkOpenNewCase.Name = "chkOpenNewCase";
+            this.chkOpenNewCase.Size = new System.Drawing.Size(189, 17);
+            this.chkOpenNewCase.TabIndex = 11;
+            this.chkOpenNewCase.Text = "Open new case instead of contact";
+            this.chkOpenNewCase.UseVisualStyleBackColor = true;
+            // 
             // moveDownButton
             // 
             this.moveDownButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -285,26 +305,6 @@ namespace MicrosoftDynamicsCRMPlugin
             this.moveUpButton.TabIndex = 5;
             this.moveUpButton.UseVisualStyleBackColor = true;
             this.moveUpButton.Click += new System.EventHandler(this.moveUpButton_Click);
-            // 
-            // chkOpenNewCase
-            // 
-            this.chkOpenNewCase.AutoSize = true;
-            this.chkOpenNewCase.Location = new System.Drawing.Point(9, 88);
-            this.chkOpenNewCase.Name = "chkOpenNewCase";
-            this.chkOpenNewCase.Size = new System.Drawing.Size(158, 17);
-            this.chkOpenNewCase.TabIndex = 11;
-            this.chkOpenNewCase.Text = "Open new case on new call";
-            this.chkOpenNewCase.UseVisualStyleBackColor = true;
-            // 
-            // chkOpenPhoneCall
-            // 
-            this.chkOpenPhoneCall.AutoSize = true;
-            this.chkOpenPhoneCall.Location = new System.Drawing.Point(9, 112);
-            this.chkOpenPhoneCall.Name = "chkOpenPhoneCall";
-            this.chkOpenPhoneCall.Size = new System.Drawing.Size(183, 17);
-            this.chkOpenPhoneCall.TabIndex = 12;
-            this.chkOpenPhoneCall.Text = "Open phone call activity after call";
-            this.chkOpenPhoneCall.UseVisualStyleBackColor = true;
             // 
             // DynamicsPluginConfigurationControl
             // 
