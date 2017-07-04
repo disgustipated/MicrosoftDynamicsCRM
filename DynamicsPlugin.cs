@@ -294,6 +294,9 @@ namespace MicrosoftDynamicsCRMPlugin
           {
             Guid result = session.StoreCallInformation(callInformation);
             LogHelper.Log(Environment.SpecialFolder.ApplicationData, "MicrosoftDynamicsCRM.log", "returned from phone call creation "+ result);
+            bool OpenPhoneCall = configurationManager.GetValue("Microsoft Dynamics Plug-in", "OpenPhoneCall","False")=="True";
+            if (OpenPhoneCall)
+                LogHelper.Log(Environment.SpecialFolder.ApplicationData, "MicrosoftDynamicsCRM.log", "Value in Open Phone Call " + OpenPhoneCall);
             return;
           }
           catch (System.ServiceModel.Security.ExpiredSecurityTokenException)

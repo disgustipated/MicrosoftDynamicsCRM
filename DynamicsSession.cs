@@ -18,23 +18,39 @@ namespace MicrosoftDynamicsCRMPlugin
     private Guid currentUserId = Guid.Empty;
     private bool isActive = false;
 
-    private string createUrl(string id, ContactTypes contactType)
+    private string createUrl(string id, ContactTypes contactType, string callNumberFlag = null, string newCase = null)
     {
       string currentServiceEndpointUri = serviceProxy.ServiceManagement.CurrentServiceEndpoint.Address.Uri.AbsoluteUri;
       int xrmServicesIndex = currentServiceEndpointUri.IndexOf("/XRMServices", StringComparison.InvariantCultureIgnoreCase);
       string url = xrmServicesIndex < 0 ? currentServiceEndpointUri : currentServiceEndpointUri.Substring(0, xrmServicesIndex);
-      switch (contactType)
-      {
+        switch (contactType)
+        {
         case ContactTypes.Account:
-          url += String.Format("/main.aspx?etn=account&id={{{0}}}&pagetype=entityrecord", id);
-          break;
+            url += String.Format("/main.aspx?etn=account&id={{{0}}}&pagetype=entityrecord", id);
+            break;
         case ContactTypes.Contact:
-          url += String.Format("/main.aspx?etn=contact&id={{{0}}}&pagetype=entityrecord", id);
-          break;
+            url += String.Format("/main.aspx?etn=contact&id={{{0}}}&pagetype=entityrecord", id);
+            break;
         case ContactTypes.Lead:
-          url += String.Format("/main.aspx?etn=lead&id={{{0}}}&pagetype=entityrecord", id);
-          break;
-      }
+            if (callNumberFlag != null)
+            {
+                url += String.Format("/main.aspx?etn=phonecall&id={{{0}}}&pagetype=entityrecord", id);
+                break;
+            }
+            else if (newCase != null)
+            {
+                url += String.Format("/main.aspx?etn=incident&id={{{0}}}&pagetype=entityrecord", id);
+                break;
+            }
+            else
+            {
+                LogHelper.Log(Environment.SpecialFolder.ApplicationData, "MicrosoftDynamicsCRM.log", "Something happened generating the URL, opening lead");
+                url += String.Format("/main.aspx?etn=lead&id={{{0}}}&pagetype=entityrecord", id);
+                break;
+            }
+        default:
+            break;
+        }
       return url;
     }
 
@@ -197,7 +213,23 @@ namespace MicrosoftDynamicsCRMPlugin
         return contactInfo;
       }
     }
-    
+
+    public void ShowPhoneCallRecord(Guid CallNumber)
+    {
+        if (serviceProxy == null)
+            throw new ApplicationException(LocalizedResourceManager.GetString("DotNetScript", "DynamicsSession.Error.NotLoggedIn"));
+
+        if (CallNumber == null)
+        {
+                LogHelper.Log(Environment.SpecialFolder.ApplicationData, "MicrosoftDynamicsCRM.log", "Call not found");
+        }
+        else
+        {
+            string CallNumberGuid = CallNumber.ToString();
+            launchUrl(createUrl(CallNumberGuid,ContactTypes.Lead,"NotNull"));
+        }
+    }
+
     public Guid StoreCallInformation(CallInformation callInformation)
     {
       if (serviceProxy == null)
@@ -275,6 +307,9 @@ namespace MicrosoftDynamicsCRMPlugin
           State = new OptionSetValue((int)Microsoft.Crm.Sdk.PhoneCallState.Open),
           Status = new OptionSetValue(1) // 1=open -> this is only valid for closed calls -> callInformation.CallType == CallTypes.Inbound ? 4 : 2
         });
+        bool OpenPhoneCall = configurationManager.GetValue("Microsoft Dynamics Plug-in", "OpenPhoneCall", "False") == "True";
+                if (OpenPhoneCall)
+                    ShowPhoneCallRecord(phoneCallID);
         return (phoneCallID);
       }
       catch (System.ServiceModel.Security.ExpiredSecurityTokenException)
