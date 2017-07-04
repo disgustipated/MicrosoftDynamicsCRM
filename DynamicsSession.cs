@@ -217,6 +217,7 @@ namespace MicrosoftDynamicsCRMPlugin
         pc.ActualDurationMinutes = callInformation.CallState == CallStates.Answered ? Convert.ToInt32((callInformation.End - callInformation.Start).TotalMinutes) : 0;
         pc.DirectionCode = callInformation.CallType != CallTypes.Inbound;
         pc.PhoneNumber = callInformation.ContactNumber;
+        pc.Description = ("Call created with 3CX integration");
 
         if (callInformation.CallType == CallTypes.Inbound)
         {
