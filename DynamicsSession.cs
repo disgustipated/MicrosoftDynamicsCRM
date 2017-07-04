@@ -196,7 +196,7 @@ namespace MicrosoftDynamicsCRMPlugin
       }
     }
     
-    public void StoreCallInformation(CallInformation callInformation)
+    public Guid StoreCallInformation(CallInformation callInformation)
     {
       if (serviceProxy == null)
         throw new ApplicationException(LocalizedResourceManager.GetString("DotNetScript", "DynamicsSession.Error.NotLoggedIn"));
@@ -265,12 +265,15 @@ namespace MicrosoftDynamicsCRMPlugin
         }
         
         pc.Id = serviceProxy.Create(pc);
+        Guid phoneCallID = (pc.Id);
+        LogHelper.Log(Environment.SpecialFolder.ApplicationData, "MicrosoftDynamicsCRM.log", "Phone Call created: " + pc.Id);
         serviceProxy.Execute(new SetStateRequest
         {
           EntityMoniker = pc.ToEntityReference(),
           State = new OptionSetValue((int)Microsoft.Crm.Sdk.PhoneCallState.Open),
           Status = new OptionSetValue(1) // 1=open -> this is only valid for closed calls -> callInformation.CallType == CallTypes.Inbound ? 4 : 2
         });
+        return (phoneCallID);
       }
       catch (System.ServiceModel.Security.ExpiredSecurityTokenException)
       {

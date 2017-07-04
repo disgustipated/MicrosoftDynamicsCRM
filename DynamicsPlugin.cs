@@ -292,7 +292,8 @@ namespace MicrosoftDynamicsCRMPlugin
         {
           try
           {
-            session.StoreCallInformation(callInformation);
+            Guid result = session.StoreCallInformation(callInformation);
+            LogHelper.Log(Environment.SpecialFolder.ApplicationData, "MicrosoftDynamicsCRM.log", "returned from phone call creation "+ result);
             return;
           }
           catch (System.ServiceModel.Security.ExpiredSecurityTokenException)

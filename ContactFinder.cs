@@ -88,7 +88,6 @@ namespace MicrosoftDynamicsCRMPlugin
       string likeCriteria = contactNumber.Length > likeCriteriaLength ? contactNumber.Substring(contactNumber.Length - likeCriteriaLength) : contactNumber;
       for (int index = 0; index < waitHandles.Length; ++index)
         launchLookupsInOrder(likeCriteria, index, lookupContactsOrder, lookupLeadsOrder, lookupAccountsOrder);
-        LogHelper.Log(Environment.SpecialFolder.ApplicationData, "MicrosoftDynamicsCRM.log", "Lookup results" + results[index]);
       
       // Return results with the configured order
       for (int index = 0; index < results.Length; ++index)
