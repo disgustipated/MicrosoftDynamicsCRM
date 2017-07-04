@@ -335,6 +335,6 @@ namespace MicrosoftDynamicsCRMPlugin
     private System.Windows.Forms.OpenFileDialog selectBrowserDialog;
     private System.Windows.Forms.GroupBox grpBoxLoginInformation;
     private System.Windows.Forms.GroupBox grpBoxContactLookup;
-        private System.Windows.Forms.CheckBox chkNewCase;
+    private System.Windows.Forms.CheckBox chkNewCase;
     }
 }
