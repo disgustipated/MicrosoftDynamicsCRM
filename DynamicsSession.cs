@@ -128,7 +128,7 @@ namespace MicrosoftDynamicsCRMPlugin
 			LogHelper.Log(Environment.SpecialFolder.ApplicationData, "MicrosoftDynamicsCRM.log", path);
 			return System.IO.File.ReadAllText(path);
 		}
-	  catch (Exception e)
+	  catch (Exception exc)
 	  {
 			LogHelper.Log(Environment.SpecialFolder.ApplicationData, "MicrosoftDynamicsCRM.log", "VERSION not found");
 	  }
