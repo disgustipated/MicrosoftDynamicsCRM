@@ -200,18 +200,30 @@ namespace MicrosoftDynamicsCRMPlugin
       ContactInfo contactInfo = contactFinder.GetContactInformation(contactNumber, 4);
       if (contactInfo == null) contactInfo = contactFinder.GetContactInformation(contactNumber, 2);
 
-      if (contactInfo == null)
-      {
-        if (createIfNotFound)
-          return createNewContactRecord(contactNumber);
+      bool OpenCaseNotContact = configurationManager.GetValue("Microsoft Dynamics Plug-in", "OpenCaseNotContact", "False") == "True";
+        if (OpenCaseNotContact)
+        {//creating new case here, need to figure out the crm sdk for create case
+         //thinking case needs to be created here
+            string CaseNumberGuid = CreateCase(contactInfo).ToString();
+            //then launch the record
+            launchUrl(createUrl(CaseNumberGuid, ContactTypes.Lead, null, "NotNull")); //passing notnull in third value to trigger case creation in createurl, contactnumber that will be passed in this instance will be the guid for the new case created
+            return contactInfo;
+        }
         else
-          throw new ApplicationException(LocalizedResourceManager.GetString("DotNetScript", "DynamicsSession.Error.ContactNotFound"));
-      }
-      else
-      {
-        launchUrl(createUrl(contactInfo.Id, contactInfo.Type));
-        return contactInfo;
-      }
+        {
+            if (contactInfo == null)
+            {
+                if (createIfNotFound)
+                    return createNewContactRecord(contactNumber);
+                else
+                    throw new ApplicationException(LocalizedResourceManager.GetString("DotNetScript", "DynamicsSession.Error.ContactNotFound"));
+            }
+            else
+            {
+                launchUrl(createUrl(contactInfo.Id, contactInfo.Type));
+                return contactInfo;
+            }
+        }
     }
 
     public void ShowPhoneCallRecord(Guid CallNumber)
@@ -321,5 +333,55 @@ namespace MicrosoftDynamicsCRMPlugin
         throw new ApplicationException(String.Format(LocalizedResourceManager.GetString("DotNetScript", "DynamicsSession.Error.StoringCallInformation"), exc.ToString()));
       }
     }
+
+    public Guid CreateCase (ContactInfo contactInfo)
+        {
+            if (serviceProxy == null)
+                throw new ApplicationException(LocalizedResourceManager.GetString("DotNetScript", "DynamicsSession.Error.NotLoggedIn"));
+
+            try
+            {
+                Microsoft.Crm.Sdk.Incident cr = new Microsoft.Crm.Sdk.Incident();
+                //pc.ActualEnd = callInformation.End;
+                
+                //pc.ActualDurationMinutes = callInformation.CallState == CallStates.Answered ? Convert.ToInt32((callInformation.End - callInformation.Start).TotalMinutes) : 0;
+                //pc.DirectionCode = callInformation.CallType != CallTypes.Inbound;
+                //pc.PhoneNumber = callInformation.ContactNumber;
+                cr.Description = ("Case created with 3CX integration");
+
+                //checking which type of entity was returned
+                EntityReference entityReference;
+                switch (contactInfo.Type)
+                {
+                    case ContactTypes.Account:
+                        entityReference = new EntityReference { Id = Guid.Parse(contactInfo.Id), LogicalName = Microsoft.Crm.Sdk.Account.EntityLogicalName };
+                        break;
+                    case ContactTypes.Contact:
+                        entityReference = new EntityReference { Id = Guid.Parse(contactInfo.Id), LogicalName = Microsoft.Crm.Sdk.Contact.EntityLogicalName };
+                        break;
+                    case ContactTypes.Lead:
+                        entityReference = new EntityReference { Id = Guid.Parse(contactInfo.Id), LogicalName = Microsoft.Crm.Sdk.Lead.EntityLogicalName };
+                        break;
+                    default:
+                        throw new ApplicationException("Invalid ContactType while storing call information: " + contactInfo.Type);
+                }
+
+                cr.PrimaryContactId= entityReference;
+                cr.ResponsibleContactId = entityReference;
+                cr.CustomerId = new EntityReference { Id = Guid.Parse(contactInfo.Id), LogicalName = Microsoft.Crm.Sdk.Contact. };
+
+                cr.Id = serviceProxy.Create(cr);
+                Guid CaseNumber = (cr.Id);
+                return (CaseNumber);
+            }
+            catch (System.ServiceModel.Security.ExpiredSecurityTokenException)
+            {
+                throw;
+            }
+            catch (Exception exc)
+            {
+                throw new ApplicationException(String.Format(LocalizedResourceManager.GetString("DotNetScript", "DynamicsSession.Error.StoringCallInformation"), exc.ToString()));
+            }
+        }
   }
 }

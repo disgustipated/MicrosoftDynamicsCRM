@@ -269,7 +269,15 @@ namespace MicrosoftDynamicsCRMPlugin
         {
           try
           {
-            return session.ShowContactRecord(contactNumber, createIfNotFound);
+            bool OpenCaseNotContact = configurationManager.GetValue("Microsoft Dynamics Plug-in", "OpenCaseNotContact", "False") == "True";
+            if (OpenCaseNotContact)
+            {//might need to open case here and then after that trigger the launch url
+                return session.ShowContactRecord(contactNumber, createIfNotFound); //this seems to do the lookup in the session cs
+            }
+            else
+            {
+                return session.ShowContactRecord(contactNumber, createIfNotFound);
+            }
           }
           catch (System.ServiceModel.Security.ExpiredSecurityTokenException)
           {
