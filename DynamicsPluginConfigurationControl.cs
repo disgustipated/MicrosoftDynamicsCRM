@@ -87,6 +87,7 @@ namespace MicrosoftDynamicsCRMPlugin
                 else
                     lookupOrderListBox.SelectedIndex = 0;
 
+                chkOpenNewCase.Checked = configurationManager.GetValue("Microsoft Dynamics Plug-in", "OpenCaseNotContact", "False") == "True";
                 chkOpenPhoneCall.Checked = configurationManager.GetValue("Microsoft Dynamics Plug-in", "OpenPhoneCall", "False") == "True";
                 chkBoxUseDefaultBrowser.Checked = configurationManager.GetValue("Microsoft Dynamics Plug-in", "UseDefaultBrowser", "True") == "True";
                 txtBrowser.Text = configurationManager.GetValue("Microsoft Dynamics Plug-in", "CustomBrowser", "");
@@ -165,6 +166,7 @@ namespace MicrosoftDynamicsCRMPlugin
                     configurationManager.SetValue("Microsoft Dynamics Plug-in", "LookupAccountsOrder", index.ToString());
             }
 
+            configurationManager.SetValue("Microsoft Dynamics Plug-in", "OpenCaseNotContact", chkOpenNewCase.Checked ? "True" : "False");
             configurationManager.SetValue("Microsoft Dynamics Plug-in", "OpenPhoneCall", chkOpenPhoneCall.Checked ? "True" : "False");
             configurationManager.SetValue("Microsoft Dynamics Plug-in", "UseDefaultBrowser", chkBoxUseDefaultBrowser.Checked ? "True" : "False");
             configurationManager.SetValue("Microsoft Dynamics Plug-in", "CustomBrowser", txtBrowser.Text);
@@ -273,6 +275,11 @@ namespace MicrosoftDynamicsCRMPlugin
         }
 
         private void chkOpenPhoneCall_CheckedChanged(object sender, EventArgs e)
+        {
+            notifyControlChanged();
+        }
+
+        private void chkOpenNewCase_CheckedChanged(object sender, EventArgs e)
         {
             notifyControlChanged();
         }
